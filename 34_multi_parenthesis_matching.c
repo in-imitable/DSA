@@ -60,7 +60,7 @@ int match(char a, char b){
     return 0;
 }
 
-char parenthesisMatch(char * exp){
+int parenthesisMatch(char * exp){
     //Create and initialize the stack
     stack * s;
     s->size = 100;
