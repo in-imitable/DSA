@@ -63,6 +63,21 @@ int isBST(node* root){
     }
 }
 
+node* search(node* root, int key){
+    if(root==NULL){
+        return NULL;
+    }
+    else if(root->data==key){
+        return root;
+    }
+    else if(root->data>key){
+        return search(root->left, key);
+    }
+    else{
+        return search(root->right, key);
+    }
+}
+
 int main(){
 
     // Constructing the root node - Using Function (Recommended)
@@ -85,13 +100,22 @@ int main(){
     // postOrderTraverse(p);
 
     // printf("\nPrinting inorder tree elements: \n");
-    inOrderTraverse(p);
+    // inOrderTraverse(p);
 
-    if(isBST(p)){
-        printf("\nIt is BST\n");
+    // if(isBST(p)){
+    //     printf("\nIt is BST\n");
+    // }
+    // else{
+    //     printf("It is not BST\n");
+    // }
+
+    node* n = search(p, 6);
+
+    if(n!=NULL){
+        printf("Found: %d", n->data);
     }
     else{
-        printf("It is not BST\n");
+        printf("Element not found!");
     }
     
     return 0;
