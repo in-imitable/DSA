@@ -87,7 +87,12 @@ int main(){
     // printf("\nPrinting inorder tree elements: \n");
     inOrderTraverse(p);
 
-    printf("\n%d ", isBST(p));
+    if(isBST(p)){
+        printf("\nIt is BST\n");
+    }
+    else{
+        printf("It is not BST\n");
+    }
     
     return 0;
 }
