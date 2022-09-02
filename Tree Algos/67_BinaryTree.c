@@ -25,7 +25,7 @@ void preOrderTraverse(node* root){
         preOrderTraverse(root->left);
         preOrderTraverse(root->right);
     }
-}
+} 
 
 // PostOrder function for Binary Tree
 void postOrderTraverse(node* root){
