@@ -117,6 +117,40 @@ void insert(node* root, int key){
     }
 }
 
+node* inOrderPredecessor(node* root){
+    root = root->left;
+    while(root->right!=NULL){
+        root = root->right;
+    }
+    return root;
+}
+
+//Creating delete() funtion to delete the element from the tree
+node* deleteNode(node* root, int value){
+    node* inPre;
+    if(root==NULL){
+        return NULL;
+    }
+    if(root->left==NULL && root->right==NULL){
+        free(root);
+        return NULL;
+    }
+    //Searching for the node to be deleted
+    if(value<root->data){
+        root->left = deleteNode(root->left, value);
+    }
+    else if(value>root->data){
+        root->right = deleteNode(root->right, value);
+    }
+    //Deletion strategy when the node is found
+    else{
+        inPre = inOrderPredecessor(root);
+        root->data = inPre->data;
+        root->left = deleteNode(root->left, inPre->data);
+    }
+    return root;
+}
+
 int main(){
 
     // Constructing the root node - Using Function (Recommended)
@@ -158,8 +192,14 @@ int main(){
     // }
 
     //Calling insert() funtion to insert the new element in the tree
-    insert(p, 8);
-    printf("%d", p->right->right->data);
+    // insert(p, 8);
+    // printf("%d", p->right->right->data);
     
+    inOrderTraverse(p);
+    //Calling delete() funtion to delete the element from the tree
+    deleteNode(p, 6);
+    printf("\n");
+    inOrderTraverse(p);
+
     return 0;
 }
