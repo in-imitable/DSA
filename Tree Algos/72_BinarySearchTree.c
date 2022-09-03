@@ -93,6 +93,30 @@ node* searchIter(node* root, int key){
     return NULL;
 }
 
+void insert(node* root, int key){
+    node* prev = NULL;
+    while(root!=NULL){
+        prev = root;
+        if(root->data==key){
+            printf("Cannot insert %d, already in this tree", key);
+            return;
+        }
+        else if(root->data>key){
+            root = root->left;
+        }
+        else{
+            root = root->right;
+        }
+    }
+    node* new = createNode(key);
+    if(prev->data>key){
+        prev->left = new;
+    }
+    else{
+        prev->right = new;
+    }
+}
+
 int main(){
 
     // Constructing the root node - Using Function (Recommended)
@@ -124,14 +148,18 @@ int main(){
     //     printf("It is not BST\n");
     // }
 
-    node* n = searchIter(p, 6);
+    // node* n = searchIter(p, 6);
 
-    if(n!=NULL){
-        printf("Found: %d", n->data);
-    }
-    else{
-        printf("Element not found!");
-    }
+    // if(n!=NULL){
+    //     printf("Found: %d", n->data);
+    // }
+    // else{
+    //     printf("Element not found!");
+    // }
+
+    //Calling insert() funtion to insert the new element in the tree
+    insert(p, 8);
+    printf("%d", p->right->right->data);
     
     return 0;
 }
