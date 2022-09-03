@@ -78,6 +78,21 @@ node* search(node* root, int key){
     }
 }
 
+node* searchIter(node* root, int key){
+    while(root!=NULL){
+        if(root->data == key){
+            return root;
+        }
+        else if(root->data > key){
+            root = root->left;
+        }
+        else{
+            root = root->right;
+        }
+    }
+    return NULL;
+}
+
 int main(){
 
     // Constructing the root node - Using Function (Recommended)
