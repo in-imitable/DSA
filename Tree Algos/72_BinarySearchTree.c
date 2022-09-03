@@ -124,7 +124,7 @@ int main(){
     //     printf("It is not BST\n");
     // }
 
-    node* n = search(p, 6);
+    node* n = searchIter(p, 6);
 
     if(n!=NULL){
         printf("Found: %d", n->data);
